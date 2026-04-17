@@ -5,12 +5,12 @@
     "xly-log": "Xly log",
     thinking: "what i'm thinking about"
   };
-  const DEFAULT_ROUTE = "posts";
+  const HOME_ROUTE = "posts";
+  const HOME_TITLE = "sacha delhoux website";
   const PREVIEW_CAP = 500;
   const SNIPPET_CAP = 140;
 
   const main = document.getElementById("main");
-  const side = document.getElementById("side");
   const navLinks = document.querySelectorAll("[data-route]");
   const yearEl = document.querySelector("[data-year]");
   const themeBtn = document.querySelector("[data-theme-toggle]");
@@ -56,55 +56,52 @@
       ? `<a class="entry__link" href="${escape(entry.url)}" target="_blank" rel="noopener">${escape(entry.title)} <span class="entry__ext">↗</span></a>`
       : escape(entry.title);
 
-  const renderSectionSidebar = (route, activeSlug) => {
-    const all = entriesFor(route);
-    const items = all
-      .map((e) => {
-        const s = slugOf(e);
-        const active = s === activeSlug ? " aria-current=\"page\"" : "";
-        return `
-          <li>
-            <a href="#/${route}/${encodeURIComponent(s)}"${active}>${escape(e.title)}</a>
-            <span>${escape(e.date)}</span>
-          </li>
-        `;
-      })
-      .join("");
-    return `
-      <h2>More in ${escape(ROUTES[route])}</h2>
-      <ul>${items}</ul>
-    `;
+  const pageTitle = (route) =>
+    route === HOME_ROUTE ? HOME_TITLE : ROUTES[route];
+
+  const renderLoadError = () => {
+    if (!loadErrors.length) return "";
+    const isFile = location.protocol === "file:";
+    const hint = isFile
+      ? `You opened this page via <code>file://</code>. Browsers block local JSON fetch in that mode. Serve the folder over HTTP: <code>python3 -m http.server</code> then open <code>http://localhost:8000</code>.`
+      : `Couldn't load content from <code>content/*.json</code>. Check the console for details.`;
+    return `<div class="notice"><strong>No content loaded.</strong><p>${hint}</p></div>`;
   };
 
-  const renderLatestSidebar = () => {
-    const all = Object.keys(ROUTES).flatMap((r) =>
-      entriesFor(r).map((e) => ({ ...e, route: r }))
-    );
-    all.sort(sortByDate);
-    const items = all
-      .slice(0, 6)
-      .map(
-        (e) => `
-          <li>
-            <a href="#/${e.route}/${encodeURIComponent(slugOf(e))}">${escape(e.title)}</a>
-            <span>${escape(e.date)} · ${escape(ROUTES[e.route])}</span>
-          </li>
-        `
-      )
-      .join("");
+  const renderMoreInSection = (route, excludeSlug) => {
+    const items = entriesFor(route).filter((e) => slugOf(e) !== excludeSlug);
+    if (!items.length) return "";
     return `
-      <h2>Latest</h2>
-      <ul>${items}</ul>
+      <section class="more">
+        <h2>More in ${escape(ROUTES[route])}</h2>
+        <ul>
+          ${items
+            .map((e) => {
+              const s = slugOf(e);
+              return `
+                <li>
+                  <a href="#/${route}/${encodeURIComponent(s)}">${escape(e.title)}</a>
+                  <span>${escape(e.date)}</span>
+                </li>
+              `;
+            })
+            .join("")}
+        </ul>
+      </section>
     `;
   };
 
   const renderSection = (route) => {
     const all = entriesFor(route);
-    const title = ROUTES[route];
+    const headline = pageTitle(route);
+    const titleClass = route === HOME_ROUTE ? "home-title" : "";
 
     if (!all.length) {
-      main.innerHTML = `<h1>${escape(title)}</h1>${renderLoadError()}<p class="empty">Nothing here yet.</p>`;
-      side.innerHTML = renderLatestSidebar();
+      main.innerHTML = `
+        <h1 class="${titleClass}">${escape(headline)}</h1>
+        ${renderLoadError()}
+        <p class="empty">Nothing here yet.</p>
+      `;
       finalize(route);
       return;
     }
@@ -152,8 +149,7 @@
       `;
     }
 
-    main.innerHTML = `<h1>${escape(title)}</h1>${featuredHtml}${archiveHtml}`;
-    side.innerHTML = renderLatestSidebar();
+    main.innerHTML = `<h1 class="${titleClass}">${escape(headline)}</h1>${featuredHtml}${archiveHtml}`;
     finalize(route);
   };
 
@@ -164,7 +160,6 @@
         <h1>Not found</h1>
         <p><a href="#/${route}">← back to ${escape(ROUTES[route])}</a></p>
       `;
-      side.innerHTML = renderSectionSidebar(route);
       finalize(route);
       return;
     }
@@ -175,15 +170,16 @@
         <h1 class="entry__title">${titleLink(entry)}</h1>
         <div class="entry__body">${linkify(entry.body)}</div>
       </article>
+      ${renderMoreInSection(route, slug)}
     `;
-    side.innerHTML = renderSectionSidebar(route, slug);
     document.title = `${entry.title} — Sacha Delhoux`;
     setActiveNav(route);
     window.scrollTo(0, 0);
   };
 
   const finalize = (route) => {
-    document.title = `${ROUTES[route]} — Sacha Delhoux`;
+    document.title =
+      route === HOME_ROUTE ? "Sacha Delhoux" : `${ROUTES[route]} — Sacha Delhoux`;
     setActiveNav(route);
     window.scrollTo(0, 0);
   };
@@ -196,9 +192,9 @@
 
   const parseRoute = () => {
     const raw = (location.hash || "").replace(/^#\//, "");
-    if (!raw) return { route: DEFAULT_ROUTE };
+    if (!raw) return { route: HOME_ROUTE };
     const [section, rawSlug] = raw.split("/");
-    if (!ROUTES[section]) return { route: DEFAULT_ROUTE };
+    if (!ROUTES[section]) return { route: HOME_ROUTE };
     return rawSlug
       ? { route: section, slug: decodeURIComponent(rawSlug) }
       : { route: section };
@@ -224,20 +220,6 @@
         }
       })
     );
-  };
-
-  const renderLoadError = () => {
-    if (!loadErrors.length) return "";
-    const isFile = location.protocol === "file:";
-    const hint = isFile
-      ? `You opened this page via <code>file://</code>. Browsers block local JSON fetch in that mode. Serve the folder over HTTP instead: <code>python3 -m http.server</code> then open <code>http://localhost:8000</code>.`
-      : `Couldn't load content from <code>content/*.json</code>. Check the console for details.`;
-    return `
-      <div class="notice">
-        <strong>No content loaded.</strong>
-        <p>${hint}</p>
-      </div>
-    `;
   };
 
   const applyTheme = (t) => {

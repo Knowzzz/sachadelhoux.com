@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Sacha Delhoux — blog." />
+    <meta name="description" content="Sacha Delhoux — website." />
     <meta name="author" content="Sacha Delhoux" />
     <meta name="theme-color" content="#1b1d23" />
     <meta property="og:title" content="Sacha Delhoux" />
-    <meta property="og:description" content="Sacha Delhoux — blog." />
+    <meta property="og:description" content="Sacha Delhoux — website." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sachadelhoux.com" />
     <title>Sacha Delhoux</title>
@@ -17,20 +17,16 @@
   <body>
     <div class="page">
       <header class="top">
-        <a href="#/posts" class="brand">Sacha Delhoux</a>
-        <nav class="nav">
+        <nav class="navbox" aria-label="Navigation">
           <a href="#/posts" data-route="posts">Posts</a>
           <a href="#/tech" data-route="tech">Tech</a>
           <a href="#/xly-log" data-route="xly-log">Xly log</a>
           <a href="#/thinking" data-route="thinking">what i'm thinking about</a>
+          <button class="theme" aria-label="Toggle theme" data-theme-toggle>◐</button>
         </nav>
-        <button class="theme" aria-label="Toggle theme" data-theme-toggle>◐</button>
       </header>
 
-      <div class="body">
-        <main id="main"></main>
-        <aside class="side" id="side"></aside>
-      </div>
+      <main id="main"></main>
 
       <footer class="foot">
         <span>© <span data-year></span> Sacha Delhoux</span>

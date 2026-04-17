@@ -53,61 +53,53 @@ ul {
 }
 
 .page {
-  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px 24px 40px;
   min-height: 100vh;
-  padding: 20px clamp(16px, 3vw, 40px) 40px;
   display: flex;
   flex-direction: column;
 }
 
 .top {
   display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.navbox {
+  display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: 28px;
-  flex-wrap: wrap;
-}
-
-.brand {
-  font-weight: 700;
-  font-size: 1.05rem;
-  white-space: nowrap;
-}
-
-.nav {
-  display: flex;
-  flex-wrap: wrap;
   gap: 18px;
-  margin-left: auto;
+  padding: 8px 14px;
+  border: 1px solid var(--rule);
 }
 
-.nav a.active {
+.navbox a.active {
   font-weight: 700;
   text-decoration: none;
 }
 
 .theme {
-  font-size: 1.1rem;
-  padding: 2px 6px;
-}
-
-.body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  gap: clamp(24px, 5vw, 80px);
-  align-items: start;
-  flex: 1;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 2px 4px;
 }
 
 main {
-  max-width: 72ch;
+  flex: 1;
 }
 
 main h1 {
   font-size: 1.9rem;
   margin-bottom: 20px;
+}
+
+.home-title {
+  text-align: left;
+  font-size: 2.1rem;
+  margin-bottom: 28px;
 }
 
 .empty {
@@ -125,7 +117,6 @@ main h1 {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.85em;
   padding: 1px 6px;
-  background: rgba(var(--bg-rgb), 0);
   border: 1px solid var(--muted);
   border-radius: 3px;
 }
@@ -298,36 +289,30 @@ main h1 {
   margin-left: calc(6em + 16px);
 }
 
-.side {
+.more {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
   font-size: 0.9rem;
-  position: sticky;
-  top: 20px;
-  justify-self: end;
-  width: 100%;
 }
 
-.side h2 {
+.more h2 {
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  color: var(--muted);
   margin-bottom: 12px;
+}
+
+.more li {
+  margin-bottom: 8px;
+}
+
+.more li span {
   color: var(--muted);
-}
-
-.side li {
-  margin-bottom: 10px;
-  line-height: 1.4;
-}
-
-.side li a[aria-current="page"] {
-  font-weight: 700;
-}
-
-.side li span {
-  display: block;
-  color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  margin-left: 8px;
 }
 
 .foot {
@@ -348,40 +333,18 @@ main h1 {
   gap: 16px;
 }
 
-@media (max-width: 1024px) {
-  .body {
-    grid-template-columns: minmax(0, 1fr) 220px;
-    gap: 32px;
-  }
-}
-
-@media (max-width: 760px) {
+@media (max-width: 640px) {
   html,
   body {
     font-size: 16px;
   }
-  .body {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  .page {
+    padding: 20px 18px 32px;
   }
-  main {
-    max-width: none;
-  }
-  .side {
-    position: static;
-    justify-self: stretch;
-    border-top: 1px solid var(--rule);
-    padding-top: 20px;
-  }
-  .nav {
-    width: 100%;
-    margin-left: 0;
-    order: 3;
-    gap: 14px;
-    row-gap: 6px;
-  }
-  .brand {
-    flex: 1;
+  .navbox {
+    gap: 12px;
+    padding: 8px 10px;
+    font-size: 0.95rem;
   }
   .archive__link {
     gap: 10px;
