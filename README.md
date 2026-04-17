@@ -1,43 +1,40 @@
 # sachadelhoux.com
 
-Site personnel — HTML, CSS et JavaScript vanilla. Aucune dépendance, aucun build step.
+Blog personnel — HTML, CSS, JS vanilla. Aucun build, aucune dépendance.
 
 ## Structure
 
 ```
 .
 ├── index.html
-├── css/
-│   ├── reset.css        # Reset moderne
-│   ├── variables.css    # Design tokens (couleurs, typo, spacing)
-│   ├── base.css         # Styles élémentaires
-│   ├── layout.css       # Structure et sections
-│   └── components.css   # Boutons, cartes, etc.
+├── css/style.css
 ├── js/
-│   ├── theme.js         # Thème clair/sombre
-│   └── main.js          # Logique de la page
-├── assets/
-│   └── favicon.svg
-├── vercel.json          # Headers et cache
-└── .gitignore
+│   ├── content.js   # Toutes les entrées du blog (posts, tech, xly-log)
+│   └── app.js       # Routing + rendu + thème
+├── assets/favicon.svg
+└── vercel.json
 ```
 
-## Développement local
+## Ajouter une entrée
 
-Aucun outil requis. Ouvrir `index.html` directement, ou servir le dossier :
+Ouvrir `js/content.js` et ajouter un objet dans la section voulue :
+
+```js
+{
+  date: "2026-04-18",
+  title: "Titre",
+  body: "Contenu libre. Les URLs deviennent cliquables."
+}
+```
+
+Sauvegarder, recharger la page. C'est tout.
+
+## Local
 
 ```sh
 python3 -m http.server 8000
-# puis http://localhost:8000
 ```
 
 ## Déploiement
 
-Site statique — se déploie tel quel sur [Vercel](https://vercel.com).
-
-```sh
-vercel
-```
-
-Vercel détecte automatiquement le projet comme statique ; aucune configuration
-supplémentaire n'est nécessaire.
+Static — se déploie tel quel sur Vercel.
