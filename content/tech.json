@@ -1,7 +1,12 @@
 [
   {
-    "date": "2026-04-17",
-    "title": "stack for this site",
-    "body": "pure html, css and vanilla js. no build step. content lives in json files — add an entry, refresh."
+    "date": "2026-03-12",
+    "title": "redis vs keydb throughput",
+    "body": "redis single-threaded architecture means command execution is bottlenecked on one core — works fine in dev but production traffic patterns expose it fast.\n\nkeydb uses the same redis protocol but spreads command processing across multiple threads — same hardware, significantly better throughput under load.\n\nthe switch is straightforward — keydb is protocol-compatible so existing clients, libraries, and code work unchanged.\n\nfor cpu-bound workloads like high-throughput API caching, the difference is real — instead of scaling out with redis cluster complexity, you scale up on the same machine.\n\nredis 6+ added io threading but command execution is still single-threaded — keydb went further and parallelized the whole pipeline.\n\nif you're hitting redis throughput limits before running out of memory or network, keydb is worth benchmarking on your actual workload."
+  },
+  {
+    "date": "2026-03-09",
+    "title": "clmm market depth math",
+    "body": "clmm market depth calculation is fairly complex and even ultra low latency MEV bots sometimes get the precision wrong.\n\nconcentrated liquidity pools don't follow x*y=k globally because liquidity is a step function across discrete tick ranges rather than uniform distribution.\n\nwhen you want to simulate a swap and calculate accurate price impact you need to walk through initialized ticks one range at a time — since liquidity changes at every tick boundary there's no closed-form solution across multiple ranges.\n\nproper slippage estimation requires tick-by-tick simulation because liquidity distribution can have gaps or concentrations at specific price levels that drastically change your execution.\n\nthe computation requires iterating initialized ticks in order, applying liquidity deltas: L_new = L_current ± liquidityNet depending on swap direction.\n\neach price range [tick_i, tick_i+1] has constant liquidity L_i so within that range you use:\n• deltaA = L_i * (√P_upper - √P_lower) / (√P_upper * √P_lower)\n• deltaB = L_i * (√P_upper - √P_lower) / 2^64\n\nbut computing nextSqrtPrice across multiple ranges requires iterative simulation through computeSwapStep with proper ceiling/floor rounding — amount_in rounds up (user never underpays), amount_out rounds down (pool never overpays).\n\neven sophisticated MEV operations sometimes use approximations that create arbitrage opportunities for those who implement the full mathematical model correctly."
   }
 ]

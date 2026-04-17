@@ -1,14 +1,67 @@
 [
   {
-    "date": "2026-04-17",
-    "title": "hello world",
-    "body": "first post on the new setup. this section mirrors what i write on x — short takes, links, thoughts. the plan is to keep everything lowercase, minimal, and fast to update. no build step, no framework, just html, css, json. every entry here will eventually link back to its original tweet via the little arrow at the top. if you're curious about the stack, check the tech section. if you want to know what i'm currently obsessed with, there's a whole tab for that too. this is post one. more to come — or not. we'll see.",
-    "url": "https://x.com/"
+    "date": "2026-04-07",
+    "title": "titan dart router fills",
+    "body": "titan exchange dart router delivers 0.0002% costs on 100k swaps with 4x better execution than binance through dynamic venue allocation.\n\ndart splits orders across multiple optimally priced venues at execution time instead of routing through single pools like traditional jit mechanisms.\n\nthe system solves quote-to-execution drift by calculating optimal splits across venues in real-time at the precise moment of execution.\n\ncomparing dart performance to NASDAQ BBO feeds shows they understand professional trading infrastructure — retail traders get institutional-grade fills onchain.\n\ncapturing 7.38% market share in month one demonstrates market demand for sophisticated routing algorithms that measurably improve execution quality.\n\nonchain routing systems push solana defi execution standards closer to tradfi while maintaining fully decentralized venue access."
   },
   {
-    "date": "2026-04-16",
-    "title": "setting things up",
-    "body": "spent a few hours reshaping this site from the ground up. the goal: write a post in under 30 seconds, from idea to published.",
-    "url": "https://x.com/"
+    "date": "2026-04-01",
+    "title": "drift halts deposits",
+    "body": "drift protocol halts deposits due to \"suspicious activity\".\n\neither someone found a new exploit or the suspicious activity was people actually making money on perps.\n\nbetter safe than sorry when it comes to user funds."
+  },
+  {
+    "date": "2026-03-30",
+    "title": "memecoin monday",
+    "body": "memecoin monday generates significant opportunities but requires proper risk assessment frameworks.\n\nsuccessful memecoin positioning depends on wallet analytics — holder concentration ratios, acquisition timestamps, and transaction clustering data separate signal from noise.\n\nsmart participants use holder distribution analysis and wallet vintage scoring to understand supply dynamics before entering positions.\n\nthe highest returns come from combining momentum indicators with comprehensive ownership structure analysis and wallet graph intelligence.\n\nmobula provides the most comprehensive trading indicators in the market — major terminals rely on our data infrastructure because superior data quality is the ultimate edge in memecoin trading."
+  },
+  {
+    "date": "2026-03-28",
+    "title": "nyse doubles down on polymarket",
+    "body": "NYSE owner dropping another 600 million into polymarket brings their total bet on prediction markets to nearly 2 billion.\n\ntraditional finance is realizing that betting markets provide better price discovery than most financial instruments.\n\nwhen the world's largest stock exchange commits this much capital to prediction infrastructure you know information markets are becoming mission critical.\n\npolymarket processes real sentiment and probability assessments that traditional polling and analysis can't capture.\n\nthe future of risk assessment is crowdsourced prediction markets not centralized research departments."
+  },
+  {
+    "date": "2026-03-15",
+    "title": "performance is physics",
+    "body": "performance optimization requires understanding hardware at the transistor level.\n\ncache misses cost more than most developers realize because they only think about algorithmic complexity.\n\nreal systems programming is about working with physics not against it."
+  },
+  {
+    "date": "2026-03-13",
+    "title": "infra engineering is underrated",
+    "body": "real-time systems and distributed consensus are underrated career paths right now — the AI talent drain is creating real opportunity in infrastructure engineering.\n\nhigh-frequency data processing, streaming analytics, and sub-millisecond latency optimization involve constraints that are physical and measurable — you can't prompt-engineer your way past hardware limits.\n\nperformance engineering at scale is genuinely hard — consensus algorithms, distributed state machines, and fault tolerance push the boundaries of what's computationally possible.\n\nthese fields are also more resilient to AI automation because the problems are tightly coupled to hardware, network physics, and system-level tradeoffs.\n\nif you're looking for deep technical work outside the ml hype cycle, infra engineering has never had more opportunity and less competition for talent."
+  },
+  {
+    "date": "2026-03-10",
+    "title": "solana priority fees are broken",
+    "body": "priority fee calculation on solana is broken in subtle ways that most people don't understand.\n\nthe compute budget instruction lets you specify max compute units but programs can dynamically allocate more during execution using invoke_signed and cpi calls.\n\nyour 0.01 sol priority fee becomes 0.5 sol when the program burns through 50x more compute than estimated.\n\nthis is why transaction simulation often shows completely different fees than actual execution — the static analysis can't predict dynamic compute allocation patterns."
+  },
+  {
+    "date": "2026-03-09",
+    "title": "aws bandwidth vs bare metal",
+    "body": "AWS charges more for bandwidth than it costs to run your own datacenter but every crypto startup still hosts there instead of going bare metal.\n\nthen they wonder why their margins are terrible and investors want them to \"optimize costs\"."
+  },
+  {
+    "date": "2026-03-08",
+    "title": "3 business days",
+    "body": "everyone talks about crypto adoption.\n\ni literally grew up with this stuff and still have to explain to people why sending money shouldn't take 3 business days."
+  },
+  {
+    "date": "2026-03-08",
+    "title": "indexers miss internal transactions",
+    "body": "indexers that track wallet transactions miss internal transactions and delegate calls.\n\nso portfolio trackers show incomplete data and users don't realize where their money actually went.\n\nfull transaction tracing across all execution layers is the missing piece."
+  },
+  {
+    "date": "2026-03-05",
+    "title": "security is a trading heuristic",
+    "body": "security is one of the most important trading heuristics, data already exists but it's fragmented across too many platforms, and those platforms often fail to perform deep analysis on each contract. as a result, hidden variables can pass through unnoticed and give malicious tokens the opportunity to rug users.\n\nthat's what @mobulaio is fixing, the biggest trading platforms in the market have already implemented it. we leverage the latest AI models on each token and each contract, using advanced methods to detect any potentially dangerous code with virtually unlimited depth.\n\none single API can solve this.\none single call to stay aware.\n\njust use mobula."
+  },
+  {
+    "date": "2026-01-10",
+    "title": "fee breakdown on trading terminals",
+    "body": "global fees paid on your trading terminal is totally outdated (axiom, padre, gmgn).\n\nwe just released a breakdown of the fees paid by users, which is, i believe, one of the best heuristic to filter out fake markets (fishing) vs organically traded markets right now.\n\non most terminals you can see total gas spending spent on a token, we extended that to offer a detailed break down of:\n- gas fees\n- MEV (jito tip, etc.)\n- platform (trading app) fees\n\nfor every swap, every token with all its detailed pools, in USD or native currency, per timeframe (1m, 5m, 24h or total) on every blockchain with a unified model.\n\nyou can't win against someone who has more data than you."
+  },
+  {
+    "date": "2025-09-17",
+    "title": "flying to dubai",
+    "body": "flying to dubai today to join part of the @mobulaio team, we continue to draw on this energy.\n\nwe never stop building.\n\ngreat things are coming."
   }
 ]

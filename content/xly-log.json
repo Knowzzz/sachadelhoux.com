@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-04-18",
+    "title": "pgbouncer limits × rotating creds",
+    "body": "learned something today about pgbouncer in a multi-client setup.\n\nwe run two pools — mobula and mobula read-only. cyril had set min 50 connections on each, which is fine on paper. but every additional user spins up their own pool, and the floor stacks up fast.\n\nthe hidden ceiling: max 150 connections total. we tried to scale to 200 and pgbouncer silently capped us at 150, killing everything above that.\n\nthis is what caused the latency we spent today debugging. yesterday the lead infra shipped a rotating credentials mechanism — fresh creds spin up fresh pool instances, and under load that pushed us past the 150 cap. half the connections were getting dropped mid-query.\n\nfix was either raising max_client_conn on pgbouncer, or dropping the per-pool minimums so rotations don't burn through the budget.\n\nlesson: any time you add something that opens new pools (rotating creds, multi-tenant, read replicas), revisit every min-connection setting. the math compounds faster than you think."
+  },
+  {
     "date": "2026-04-17",
     "title": "kickoff",
     "body": "logging whenever i feel like it. no schedule, no pressure."
