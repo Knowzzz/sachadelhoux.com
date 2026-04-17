@@ -114,6 +114,26 @@ main h1 {
   color: var(--muted);
 }
 
+.notice {
+  border: 1px solid var(--rule);
+  padding: 16px;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.notice code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  padding: 1px 6px;
+  background: rgba(var(--bg-rgb), 0);
+  border: 1px solid var(--muted);
+  border-radius: 3px;
+}
+
+.notice p {
+  margin-top: 6px;
+}
+
 .breadcrumb {
   font-size: 0.9rem;
   color: var(--muted);

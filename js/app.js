@@ -16,6 +16,7 @@
   const themeBtn = document.querySelector("[data-theme-toggle]");
 
   const store = {};
+  const loadErrors = [];
 
   const escape = (s) =>
     String(s).replace(/[&<>"']/g, (c) => ({
@@ -102,7 +103,7 @@
     const title = ROUTES[route];
 
     if (!all.length) {
-      main.innerHTML = `<h1>${escape(title)}</h1><p class="empty">Nothing here yet.</p>`;
+      main.innerHTML = `<h1>${escape(title)}</h1>${renderLoadError()}<p class="empty">Nothing here yet.</p>`;
       side.innerHTML = renderLatestSidebar();
       finalize(route);
       return;
@@ -214,12 +215,29 @@
       routes.map(async (r) => {
         try {
           const res = await fetch(`content/${r}.json`, { cache: "no-cache" });
-          store[r] = res.ok ? await res.json() : [];
-        } catch {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          store[r] = await res.json();
+        } catch (err) {
           store[r] = [];
+          loadErrors.push({ route: r, message: err.message || String(err) });
+          console.error(`Failed to load content/${r}.json`, err);
         }
       })
     );
+  };
+
+  const renderLoadError = () => {
+    if (!loadErrors.length) return "";
+    const isFile = location.protocol === "file:";
+    const hint = isFile
+      ? `You opened this page via <code>file://</code>. Browsers block local JSON fetch in that mode. Serve the folder over HTTP instead: <code>python3 -m http.server</code> then open <code>http://localhost:8000</code>.`
+      : `Couldn't load content from <code>content/*.json</code>. Check the console for details.`;
+    return `
+      <div class="notice">
+        <strong>No content loaded.</strong>
+        <p>${hint}</p>
+      </div>
+    `;
   };
 
   const applyTheme = (t) => {
