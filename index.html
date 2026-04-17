@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sacha Delhoux — portfolio personnel." />
+    <meta name="author" content="Sacha Delhoux" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <meta property="og:title" content="Sacha Delhoux" />
+    <meta property="og:description" content="Portfolio personnel de Sacha Delhoux." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sachadelhoux.com" />
+
+    <title>Sacha Delhoux</title>
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="/" class="nav__brand" aria-label="Accueil">SD</a>
+        <ul class="nav__list">
+          <li><a href="#about" class="nav__link">À propos</a></li>
+          <li><a href="#work" class="nav__link">Projets</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+        <button
+          type="button"
+          class="nav__theme"
+          aria-label="Basculer le thème"
+          data-theme-toggle
+        >
+          <span aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <p class="hero__eyebrow">Bonjour, je suis</p>
+          <h1 id="hero-title" class="hero__title">Sacha Delhoux.</h1>
+          <p class="hero__subtitle">
+            Je construis des produits web propres et rapides.
+          </p>
+          <div class="hero__actions">
+            <a href="#work" class="btn btn--primary">Voir les projets</a>
+            <a href="#contact" class="btn btn--ghost">Me contacter</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section" aria-labelledby="about-title">
+        <div class="container">
+          <h2 id="about-title" class="section__title">À propos</h2>
+          <p class="section__lead">
+            Développeur passionné par la performance, l'ergonomie et les détails
+            qui font la différence.
+          </p>
+        </div>
+      </section>
+
+      <section id="work" class="section section--alt" aria-labelledby="work-title">
+        <div class="container">
+          <h2 id="work-title" class="section__title">Projets</h2>
+          <ul class="cards" role="list">
+            <li class="card">
+              <h3 class="card__title">Projet un</h3>
+              <p class="card__body">Une courte description du projet.</p>
+            </li>
+            <li class="card">
+              <h3 class="card__title">Projet deux</h3>
+              <p class="card__body">Une courte description du projet.</p>
+            </li>
+            <li class="card">
+              <h3 class="card__title">Projet trois</h3>
+              <p class="card__body">Une courte description du projet.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact" class="section" aria-labelledby="contact-title">
+        <div class="container">
+          <h2 id="contact-title" class="section__title">Contact</h2>
+          <p class="section__lead">
+            Une idée, un projet, ou juste envie d'échanger ?
+          </p>
+          <a class="btn btn--primary" href="mailto:sacha.delpom@gmail.com">
+            sacha.delpom@gmail.com
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p>&copy; <span data-year></span> Sacha Delhoux</p>
+        <ul class="socials" role="list">
+          <li><a href="https://github.com/" rel="noopener" target="_blank">GitHub</a></li>
+          <li><a href="https://x.com/" rel="noopener" target="_blank">X</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="js/theme.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
