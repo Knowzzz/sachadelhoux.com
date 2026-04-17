@@ -64,15 +64,16 @@ ul {
 .top {
   display: flex;
   justify-content: center;
-  margin-bottom: 36px;
+  margin-bottom: 16px;
 }
 
 .navbox {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 18px;
-  padding: 8px 14px;
+  justify-content: center;
+  gap: 32px;
+  padding: 12px 26px;
   border: 1px solid var(--rule);
 }
 
@@ -89,17 +90,26 @@ ul {
 
 main {
   flex: 1;
+  text-align: center;
 }
 
 main h1 {
   font-size: 1.9rem;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .home-title {
-  text-align: left;
+  text-align: center;
   font-size: 2.1rem;
   margin-bottom: 28px;
+}
+
+.entry__body,
+.preview__text,
+.archive__desc,
+.notice {
+  text-align: left;
 }
 
 .empty {
@@ -261,6 +271,7 @@ main h1 {
   gap: 16px;
   align-items: baseline;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .archive__link:hover {
@@ -286,7 +297,6 @@ main h1 {
   color: var(--muted);
   font-size: 0.9rem;
   margin-top: 4px;
-  margin-left: calc(6em + 16px);
 }
 
 .more {
@@ -352,8 +362,9 @@ main h1 {
   .archive__date {
     min-width: auto;
   }
-  .archive__desc {
-    margin-left: 0;
+  .navbox {
+    gap: 20px;
+    padding: 10px 16px;
   }
   .foot {
     flex-direction: column;
