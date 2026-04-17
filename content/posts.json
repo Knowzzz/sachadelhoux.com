@@ -1,0 +1,14 @@
+[
+  {
+    "date": "2026-04-17",
+    "title": "hello world",
+    "body": "first post on the new setup. this section mirrors what i write on x — short takes, links, thoughts. the plan is to keep everything lowercase, minimal, and fast to update. no build step, no framework, just html, css, json. every entry here will eventually link back to its original tweet via the little arrow at the top. if you're curious about the stack, check the tech section. if you want to know what i'm currently obsessed with, there's a whole tab for that too. this is post one. more to come — or not. we'll see.",
+    "url": "https://x.com/"
+  },
+  {
+    "date": "2026-04-16",
+    "title": "setting things up",
+    "body": "spent a few hours reshaping this site from the ground up. the goal: write a post in under 30 seconds, from idea to published.",
+    "url": "https://x.com/"
+  }
+]

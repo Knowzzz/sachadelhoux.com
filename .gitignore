@@ -19,3 +19,7 @@ npm-debug.log*
 
 # Vercel
 .vercel
+
+# Local instructions (Claude)
+CLAUDE.md
+.claude/

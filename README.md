@@ -8,28 +8,34 @@ Blog personnel — HTML, CSS, JS vanilla. Aucun build, aucune dépendance.
 .
 ├── index.html
 ├── css/style.css
-├── js/
-│   ├── content.js   # Toutes les entrées du blog (posts, tech, xly-log)
-│   └── app.js       # Routing + rendu + thème
+├── js/app.js           # Routing + rendu + thème
+├── content/
+│   ├── posts.json      # Tweets / posts courts
+│   ├── tech.json       # Articles techniques
+│   ├── xly-log.json    # Logs
+│   └── thinking.json   # Notes ouvertes
 ├── assets/favicon.svg
 └── vercel.json
 ```
 
 ## Ajouter une entrée
 
-Ouvrir `js/content.js` et ajouter un objet dans la section voulue :
+Ouvrir le fichier JSON correspondant et ajouter un objet :
 
-```js
+```json
 {
-  date: "2026-04-18",
-  title: "Titre",
-  body: "Contenu libre. Les URLs deviennent cliquables."
+  "date": "2026-04-18",
+  "title": "titre",
+  "body": "contenu libre. les URLs deviennent cliquables.",
+  "url": "https://x.com/.../status/..."
 }
 ```
 
-Sauvegarder, recharger la page. C'est tout.
+Le champ `url` est optionnel — quand présent, le titre devient un lien vers le tweet original.
 
 ## Local
+
+Nécessite un serveur HTTP (les `fetch` vers les JSON ne marchent pas en `file://`) :
 
 ```sh
 python3 -m http.server 8000

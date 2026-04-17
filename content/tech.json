@@ -1,0 +1,7 @@
+[
+  {
+    "date": "2026-04-17",
+    "title": "stack for this site",
+    "body": "pure html, css and vanilla js. no build step. content lives in json files — add an entry, refresh."
+  }
+]
