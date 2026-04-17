@@ -6,7 +6,7 @@
     thinking: "what i'm thinking about"
   };
   const HOME_ROUTE = "posts";
-  const HOME_TITLE = "sacha delhoux website";
+  const HOME_TITLE = "sacha delhoux's website";
   const PREVIEW_CAP = 500;
   const SNIPPET_CAP = 140;
 
