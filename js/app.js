@@ -229,8 +229,7 @@
 
   const initTheme = () => {
     const saved = localStorage.getItem("theme");
-    const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
-    applyTheme(saved || (prefersDark ? "dark" : "light"));
+    applyTheme(saved || "light");
   };
 
   themeBtn.addEventListener("click", () => {
