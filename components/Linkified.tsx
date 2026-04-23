@@ -1,5 +1,6 @@
 "use client";
 
+import posthog from "posthog-js";
 import { linkify } from "@/lib/content";
 
 export default function Linkified({ text }: { text: string }) {
@@ -8,7 +9,7 @@ export default function Linkified({ text }: { text: string }) {
     <>
       {parts.map((p, i) =>
         p.type === "link" ? (
-          <a key={i} href={p.value} target="_blank" rel="noopener">
+          <a key={i} href={p.value} target="_blank" rel="noopener" onClick={() => posthog.capture("body_link_clicked", { url: p.value })}>
             {p.value}
           </a>
         ) : (

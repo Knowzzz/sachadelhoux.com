@@ -1,14 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import posthog from "posthog-js";
 import { getEntries, slugOf, truncate, ROUTES, PREVIEW_CAP, SNIPPET_CAP } from "@/lib/content";
 import type { Route, Entry } from "@/lib/content";
 import Linkified from "./Linkified";
 
-function EntryTitle({ entry }: { entry: Entry }) {
+function EntryTitle({ entry, route }: { entry: Entry; route: Route }) {
   if (entry.url) {
     return (
-      <a className="entry__link" href={entry.url} target="_blank" rel="noopener">
+      <a
+        className="entry__link"
+        href={entry.url}
+        target="_blank"
+        rel="noopener"
+        onClick={() => posthog.capture("external_link_clicked", { title: entry.title, url: entry.url, section: route })}
+      >
         {entry.title} <span className="entry__ext">↗</span>
       </a>
     );
@@ -43,14 +50,18 @@ export default function SectionView({ route, heading }: { route: Route; heading:
       <article className="entry entry--featured">
         <div className="entry__meta">{featured.date}</div>
         <h2 className="entry__title">
-          <EntryTitle entry={featured} />
+          <EntryTitle entry={featured} route={route} />
         </h2>
         <div className={truncated ? "preview preview--fade" : "preview"}>
           <div className="preview__text">
             <Linkified text={shown} />
           </div>
         </div>
-        <Link className="preview__bar" href={`/${route}/${encodeURIComponent(slug)}`}>
+        <Link
+          className="preview__bar"
+          href={`/${route}/${encodeURIComponent(slug)}`}
+          onClick={() => posthog.capture("article_opened", { slug, title: featured.title, section: route, source: "featured" })}
+        >
           Show more
         </Link>
       </article>
@@ -63,7 +74,11 @@ export default function SectionView({ route, heading }: { route: Route; heading:
               const s = slugOf(e);
               return (
                 <li key={s} className="archive__item">
-                  <Link className="archive__link" href={`/${route}/${encodeURIComponent(s)}`}>
+                  <Link
+                    className="archive__link"
+                    href={`/${route}/${encodeURIComponent(s)}`}
+                    onClick={() => posthog.capture("article_opened", { slug: s, title: e.title, section: route, source: "archive" })}
+                  >
                     <span className="archive__date">{e.date}</span>
                     <span className="archive__name">{e.title}</span>
                   </Link>
