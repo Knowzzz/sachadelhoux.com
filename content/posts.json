@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-17",
+    "title": "followers are becoming a second pnl",
+    "body": "trading is becoming increasingly social.\n\ni see it with streamers, traders, retail, even friends around me: they are no longer optimizing only for pnl or leaderboard rank. they also care about followers.\n\nfomo makes this explicit. trades become a real-time feed, performance becomes a profile, leaderboards make skill discoverable, and every good position can attract an audience.\n\nthis changes what a trade produces.\n\nit still produces pnl, but it can now produce content, reputation, and distribution. a good call is no longer private proof. it becomes a public event that compounds into recognition.\n\nyoutube did this to video. twitter did it to opinions. social trading is now doing it to financial performance.\n\nand in crypto, undeniable recognition has value. a visible track record creates trust, access, and reach.\n\nfollowers are becoming a second pnl."
+  },
+  {
     "date": "2026-04-07",
     "title": "titan dart router fills",
     "body": "titan exchange dart router delivers 0.0002% costs on 100k swaps with 4x better execution than binance through dynamic venue allocation.\n\ndart splits orders across multiple optimally priced venues at execution time instead of routing through single pools like traditional jit mechanisms.\n\nthe system solves quote-to-execution drift by calculating optimal splits across venues in real-time at the precise moment of execution.\n\ncomparing dart performance to NASDAQ BBO feeds shows they understand professional trading infrastructure — retail traders get institutional-grade fills onchain.\n\ncapturing 7.38% market share in month one demonstrates market demand for sophisticated routing algorithms that measurably improve execution quality.\n\nonchain routing systems push solana defi execution standards closer to tradfi while maintaining fully decentralized venue access."
