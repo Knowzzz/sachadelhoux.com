@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ThemeInitScript from "@/components/ThemeInitScript";
 import PostHogProvider from "@/components/PostHogProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: {
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </div>
         </PostHogProvider>
+        <Analytics />
       </body>
     </html>
   );
